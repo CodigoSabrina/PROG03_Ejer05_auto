@@ -1,0 +1,42 @@
+public static void main(String[] args) {
+        Scanner entrada = new Scanner (System.in);
+        double[][] sueldos;
+        double sumatorio_hombres = 0, sumatorio_mujeres = 0;
+        int contador = 0, aux = 0;
+        
+        System.out.print("Introduce el numero de personas distintas: ");
+        aux = entrada.nextInt();
+        
+        sueldos = new double[aux][2];
+        
+        for (int i = 0; i < sueldos.length; i++)
+        {
+            aux = 0;
+            System.out.printf("Datos de la persona %d: \n", (i+1));
+            
+            System.out.print("Indica su genero (0 - hombre / 1 - mujer): ");
+            sueldos[i][aux] = entrada.nextInt();
+            aux++;
+            System.out.print("Indica el sueldo: ");
+            sueldos[i][aux] = entrada.nextDouble();
+            System.out.print("-------------\n");
+        }
+        
+        for (int i = 0; i < sueldos.length; i++)
+        {
+            if (sueldos[i][0] == 0)
+            {
+                sumatorio_hombres += sueldos[i][1];
+                contador++;
+            }
+            else
+            {
+                sumatorio_mujeres += sueldos[i][1];
+            }
+        }
+        
+        System.out.printf("Mujeres entrevistadas: %d\n", (sueldos.length-contador));
+        System.out.printf("Sueldo medio: %.2f\n", (sumatorio_mujeres/(sueldos.length-contador)));
+        System.out.printf("Hombres entrevistados: %d\n", (contador));
+        System.out.printf("Sueldo medio: %.2f\n", (sumatorio_hombres/contador));
+    }
